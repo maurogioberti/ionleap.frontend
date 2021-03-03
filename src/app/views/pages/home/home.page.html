@@ -1,0 +1,62 @@
+<ion-header  [fullscreen]="true">
+  <ion-toolbar>
+    <ion-title>Neoris IonLeap</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="viewMenu()">
+        <ion-icon name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="viewLogin()">
+        <ion-icon name="exit"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-router-outlet id="main-menu"></ion-router-outlet>
+  <ion-menu side="start" menuId="main-menu" contentId="main-menu">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Administrar</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item (click)="menuItemHandler('productsSubmenu')">Productos<ion-icon item-end name="cube"></ion-icon></ion-item>
+        <ion-item-group submenu [hidden]="productsSubmenu">
+          <ion-item (click)="viewMenuManage('product')"><ion-icon item-start name="radio-button-on"></ion-icon>Agregar Producto</ion-item>
+          <ion-item (click)="viewMenuManage('products')"><ion-icon item-start name="radio-button-on"></ion-icon>Listado Productos</ion-item>
+        </ion-item-group>
+        <ion-item (click)="menuItemHandler('brandsSubmenu')">Marcas<ion-icon item-end name="pricetags"></ion-icon></ion-item>
+        <ion-item-group submenu [hidden]="brandsSubmenu">
+          <ion-item (click)="viewMenuManage('brand')"><ion-icon item-start name="radio-button-on"></ion-icon>Agregar Marca</ion-item>
+          <ion-item (click)="viewMenuManage('brands')"><ion-icon item-start name="radio-button-on"></ion-icon>Listado Marcas</ion-item>
+        </ion-item-group>
+        <ion-item (click)="menuItemHandler('categoriesSubmenu')">Tipos Productos<ion-icon item-end name="pint"></ion-icon></ion-item>
+        <ion-item-group submenu [hidden]="categoriesSubmenu">
+          <ion-item (click)="viewMenuManage('category')"><ion-icon item-start name="radio-button-on"></ion-icon>Agregar Tipo Producto</ion-item>
+          <ion-item (click)="viewMenuManage('categories')"><ion-icon item-start name="radio-button-on"></ion-icon>Listado Tipos Productos</ion-item>
+        </ion-item-group>
+        <ion-item (click)="menuItemHandler('customersSubmenu')">Clientes<ion-icon item-end name="people"></ion-icon></ion-item>
+        <ion-item-group submenu [hidden]="customersSubmenu">
+          <ion-item (click)="viewMenuManage('customer')"><ion-icon item-start name="radio-button-on"></ion-icon>Agregar Cliente</ion-item>
+          <ion-item (click)="viewMenuManage('customers')"><ion-icon item-start name="radio-button-on"></ion-icon>Listado Clientes</ion-item>
+        </ion-item-group>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <br/><br/>
+  <ion-text color="primary" class="ion-text-center">
+    <h1>Dashboard Neoris IonLeap</h1>
+  </ion-text>
+  <ion-text color="dark" class="ion-text-center">
+    <h5>¿Estas dispuesto a disfrutar de una experiencia en Neoris?</h5>
+  </ion-text>
+  <p class="ion-text-center">
+    NEORIS es una compañía global de servicios especializada en consultoría de alto valor añadido, nearshore outsourcing y tecnologías emergentes. Ayudamos a nuestros clientes a mejorar su rendimiento mediante soluciones flexibles e innovadoras a través de nuestro Modelo de Gestión Global.
+  </p>
+  <ion-text class="ion-text-center">
+    <h4>Visitanos en nuestro <a href="https://www.neoris.com/">sitio web</a> para más información.</h4>
+  </ion-text>
+</ion-content>

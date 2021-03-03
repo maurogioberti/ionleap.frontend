@@ -1,0 +1,69 @@
+<ion-content>
+  <div class="neoris-content">
+    <div class="neoris-title">
+      <h2>Neoris Ionleap - Autenticación</h2>
+    </div>
+    <div class="btns-holder animated fadeInUp delay-1s ion-text-center">
+      <img src="assets/images/logo/customer_logo.png" alt="">
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="details">
+
+        <div class="detail-item">
+          <ion-label>Usuario</ion-label>
+          <ion-item>
+            <span class="icn" slot="end" *ngIf="!loginForm.get('username').invalid">
+              <ion-icon name="ios-checkmark-circle"></ion-icon>
+            </span>
+            <ion-input formControlName="username" class="username" placeholder="Usuario"> </ion-input>
+          </ion-item>
+
+          <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.username">
+              <div class="error-message"
+                *ngIf="loginForm.get('username').hasError(error.type) && (loginForm.get('username').dirty || loginForm.get('username').touched)">
+                {{error.message}}
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="detail-item">
+          <ion-label>Contraseña</ion-label>
+          <ion-item>
+            <span class="icn" slot="end" *ngIf="!loginForm.get('password').invalid">
+              <ion-icon name="ios-checkmark-circle"></ion-icon>
+            </span>
+            <ion-input class="password" placeholder="Contraseña" type="password" formControlName="password"> </ion-input>
+          </ion-item>
+        </div>
+
+
+        <div class="error-messages">
+          <ng-container *ngFor="let error of error_messages.password">
+            <div class="error-message"
+              *ngIf="loginForm.get('password').hasError(error.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+              {{error.message}}
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="second-item">
+          <ion-row>
+            <ion-col>
+              <ion-item lines="none" id="rem" class="ion-no-padding">
+                <ion-label>Recordarme</ion-label>
+                <ion-checkbox mode="ios" slot="start"></ion-checkbox>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </div>
+
+      </div>
+      <div class="loginbtn-holder ion-text-center">
+        <ion-button size="block" type="submit" routerDirection="root" [disabled]="loginForm.invalid">
+          Iniciar Sesión
+        </ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,35 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="goLogin()">
+        Saltar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="phone-holder animated fadeInUp delay-2s ion-text-center">
+    <ion-img src="assets/images/logo/Neoris-IonLeap-Intro.png" alt="Neorios Ionleap Logo"> </ion-img>
+  </div>
+  <div class="bottom-holder">
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide>
+        <div class="slide-content ion-text-center">
+          <h4 class="ion-text-wrap">Bienvenido Neoris Ionleap</h4>
+          <p class="ion-text-wrap">Neoris es la mejor empresa de desarrollo de Software a nivel mundial.</p>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="slide-content ion-text-center">
+          <h4 class="ion-text-wrap">Ionleap te ofrece</h4>
+          <p class="ion-text-wrap">Un simple CRUD implementado utilizando Ionic 5 Angular 10.</p>
+        </div>
+      </ion-slide>
+    </ion-slides>
+    <div class="btns-holder ion-paddding-horizontal ion-text-center">
+      <ion-button (click)="goLogin()">
+        Ingresar
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

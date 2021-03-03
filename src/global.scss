@@ -1,0 +1,189 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+/* NGX Datatable CSS */
+@import 'assets/themes/data-table.index.css';
+@import 'assets/themes/data-table.dark.css';
+@import 'assets/themes/data-table.material.css';
+@import 'assets/themes/data-table.bootstrap.css';
+@import 'assets/themes/data-table.icons.css';
+
+
+@media screen and (max-width: 800px) {
+    .desktop-hidden {
+        display: initial;
+    }
+    .mobile-hidden {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .desktop-hidden {
+        display: none;
+    }
+    .mobile-hidden {
+        display: initial;
+    }
+}
+
+.ngx-datatable .datatable-footer .datatable-footer-inner {
+    background-color: #12202A;
+}
+
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled).active a, .ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled):hover a {
+    background-color: #0e1a22;
+}
+
+
+.ngx-datatable .datatable-body .datatable-row-detail {
+    height: 100% !important;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+.ngx-datatable *, .ngx-datatable :after, .ngx-datatable :before {
+    font-size: initial;
+}
+.ngx-datatable .datatable-body .datatable-row-detail ion-label {
+    box-sizing: border-box;
+    font-size: small;
+}
+
+.ngx-datatable .datatable-body .datatable-row-detail b {
+    font-size: initial;
+}
+
+.modal-wrapper{
+    background: transparent !important;
+}
+
+.searchbar-input-container{
+        padding-left: 10px !important;
+}
+
+.item-radio-checked
+{
+  --background: #dfe7f5 !important;
+  --color:var(--ion-color-primary) !important;
+}
+
+.cat-holder
+{
+   overflow-x: scroll !important;
+   overflow-y: hidden !important;
+   white-space: nowrap !important;
+   &::-webkit-scrollbar {
+     display: none !important;
+  }
+   ion-radio-group{
+     .rad-item
+     {
+         margin: 0 10px !important;
+         width: 70px;
+        display: inline-block !important;
+        ion-item{
+            --min-height:70px;
+            --border-radius:50% !important;
+            //--background:rgb(153, 153, 153);
+            ion-radio{
+                opacity: 0 !important;
+            }
+        }
+     }
+       
+    }
+}
+
+
+ion-tab-bar {
+    --ion-tab-bar-color-activated: #12202A;
+  ion-tab-button{
+    text-align: center !important;
+    margin-top: -20px !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 25px !important;
+    ion-label{
+        padding-top: 40px !important;
+    }
+  }
+}
+
+.neoris-title
+{
+    h2{
+        font-weight: bolder !important;
+        margin-top: 0 !important;
+    }
+}
+
+.neoris-form
+{
+    .detail-item
+    {
+        margin: 15px 0 !important;
+        ion-label{
+            font-size: .9rem !important;
+            color: #77869E !important;
+        }
+   
+        ion-textarea{
+            --background:#dfe7f5;
+        }
+    }
+}
+
+ion-footer{
+    ion-button{
+        height: 50px !important;
+    }
+}
+
+ion-item{
+    span{
+        margin: 0 !important;
+    }
+}
+
+ion-col {
+    border-right: 1px solid #e6e9ee;
+    border-left:  1px solid #e6e9ee;
+  }
+
+.sc-ion-card-md-h {
+    box-shadow: 0 3px 1px -2px #7700ff, 0 2px 2px 0 #7700ff, 0 1px 5px 0 #7700ff
+}
+
+ion-card-subtitle {
+     color: #262626;
+}
+
+.button-block {
+    font-weight: bold;
+}

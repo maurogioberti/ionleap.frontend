@@ -1,0 +1,57 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf="item == null" defaultHref="home"></ion-back-button>
+      <ion-button (click)="closeModal()" *ngIf="item != null">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="brandForm" (ngSubmit)="action()">
+    <div class="neoris-title ion-padding-horizontal">
+      <ion-item lines="none">
+        <h2>{{ item == null ? 'Agregar' : 'Modificar' }} Marca {{ item == null ? '' : item.description }}</h2>
+        <ion-button *ngIf="item != null" fill="clear" slot="end" color="dark" (click)="remove()">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <div>Por favor completa el formulario.</div>
+    </div>
+    <div class="neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Marca</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="text" formControlName="description" placeholder="Marca"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Descripcion</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="text" formControlName="detail" placeholder="Descripcion"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+  </form>
+  <ion-card *ngIf="item != null">
+    <ion-card-header>
+      <ion-card-title>Primeros 5 Productos de Marca {{ item.description }}</ion-card-title> 
+    </ion-card-header>
+    <ion-card-content>
+      <div class="neoris-list">
+        <ion-item *ngFor="let product of products">{{ product.description }}</ion-item>
+        <ion-item *ngIf="products.length == 0">No hay productos con la marca {{ item.description }}</ion-item>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer no-border>
+  <ion-toolbar>
+    <ion-button expand="block" (click)="action()">
+      Guardar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

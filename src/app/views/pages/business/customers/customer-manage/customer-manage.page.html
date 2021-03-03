@@ -1,0 +1,110 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf="item == null" defaultHref="home"></ion-back-button>
+      <ion-button (click)="closeModal()" *ngIf="item != null">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="customerForm" (ngSubmit)="action()">
+    <div class="neoris-title ion-padding-horizontal">
+      <ion-item lines="none">
+        <h2>{{ item == null ? 'Agregar' : 'Modificar' }} Cliente {{ item == null ? '' : item.description }}</h2>
+        <ion-button *ngIf="item != null" fill="clear" slot="end" color="dark" (click)="remove()">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <div>Por favor completa el formulario.</div>
+    </div>
+    <div class="neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Nombre</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="text" formControlName="name" placeholder="Nombre"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Apellido</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="text" formControlName="surname" placeholder="Apellido"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Apodo</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="text" formControlName="description" placeholder="Apodo"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Precio Especial</ion-label>
+        <ion-item>
+          <ion-toggle formControlName="businessPrice" [checked]="item == null ? 'false' : item.businessPrice"></ion-toggle>
+        </ion-item>
+      </div>
+    </div>
+    <div class="neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>DNI</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="number" formControlName="personalId" placeholder="DNI"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Email</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="email" formControlName="email" placeholder="Email"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Dirección</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="text" formControlName="address" placeholder="Dirección"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Whatsapp</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="number" formControlName="mobile" placeholder="Whatsapp"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Teléfono Fijo</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="number" formControlName="phone" placeholder="Teléfono Fijo"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Deuda</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="number" formControlName="salary" placeholder="Deuda"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+  </form>
+</ion-content>
+<ion-footer no-border>
+  <ion-toolbar>
+    <ion-button expand="block" (click)="action()">
+      Guardar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

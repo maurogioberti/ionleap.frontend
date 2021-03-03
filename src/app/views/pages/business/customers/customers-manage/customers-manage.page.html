@@ -1,0 +1,14 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-input type="text" placeholder="Buscar" #filter (keyup.enter)="getLike(filter.value)"></ion-input>
+    <ion-button large clear slot="end" type="submit" (click)="getLike(filter.value)"><ion-icon item-end name="search"></ion-icon></ion-button>
+  </ion-item>
+  <responsive-table [item]="responsiveTable"></responsive-table>
+</ion-content>

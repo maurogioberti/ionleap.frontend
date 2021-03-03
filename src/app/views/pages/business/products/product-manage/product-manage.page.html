@@ -1,0 +1,121 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf="item == null" defaultHref="home"></ion-back-button>
+      <ion-button (click)="closeModal()" *ngIf="item != null">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="item != null"  slot="icon-only" (click)="remove()"><ion-icon slot="end" name="trash"></ion-icon></ion-button>
+  </ion-buttons>
+  <form [formGroup]="productForm" (ngSubmit)="action()">
+    <div class="neoris-title ion-padding-horizontal">
+      <ion-item lines="none">
+        <h2>{{ item == null ? 'Agregar' : 'Modificar' }} Producto {{ item == null ? '' : item.description }}</h2>
+        <ion-button *ngIf="item != null" fill="clear" slot="end" color="dark" (click)="remove()">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <div>Por favor completa el formulario.</div>
+    </div>
+    <div class="neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Nombre de Producto</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="text" formControlName="description" placeholder="Producto"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="money-holder neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Costo</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="number" placeholder="0.00" formControlName="cost" (change)="computePrice()" [(ngModel)]="inputCost"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="money-holder neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Precio</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="number"  placeholder="0.00" formControlName="price" [(ngModel)]="inputPrice"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="money-holder neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Precio Gym</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="number" placeholder="0.00" formControlName="priceBusiness" [(ngModel)]="inputPriceBusiness"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="money-holder neoris-form ion-padding-horizontal">
+      <div class="detail-item">
+        <ion-label>Cantidad</ion-label>
+        <ion-item>
+          <ion-input class="ion-text-center" type="number" placeholder="0" formControlName="quantity"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="neoris-form ion-padding-horizontal">
+      <div class="neoris-form ion-padding-horizontal">
+        <div class="detail-item">
+          <ion-label>Marca</ion-label>
+          <ion-item>
+            <ion-select placeholder="Marca" formControlName="brandIdentity" value="{{ item == null ? '' : brandSelected.identity.toString() }}">
+              <ion-select-option *ngFor="let b of brands" [value]="b.identity.toString()">{{ b.description }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+      </div>
+      <div class="neoris-form ion-padding-horizontal">
+        <div class="detail-item">
+          <ion-label>Categoría</ion-label>
+          <ion-item>
+            <ion-select placeholder="Categoría" formControlName="categoryIdentity" value="{{ item == null ? '' : categorySelected.identity.toString() }}">
+              <ion-select-option *ngFor="let cat of categories" value="{{ cat.identity.toString() }}">{{ cat.description }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+      </div>
+      <div class="detail-item">
+        <ion-label>Descripción</ion-label>
+        <ion-item>
+          <ion-textarea rows='5' formControlName="detail" placeholder="Detalle de Producto">
+          </ion-textarea>
+        </ion-item>
+      </div>
+      <div class="neoris-form ion-padding-horizontal">
+        <div class="detail-item">
+          <ion-label>Mostrar en la página web</ion-label>
+          <ion-item>
+            <ion-toggle formControlName="webSite" [checked]="item == null ? 'false' : item.webSite "></ion-toggle>
+          </ion-item>
+        </div>
+      </div>
+      <div class="neoris-form ion-padding-horizontal">
+        <div class="detail-item">
+          <ion-label>Imágen</ion-label>
+          <div *ngIf="pictureBinary != ''" text-center>
+            <img [src]="pictureBinary"/>
+          </div>
+          <ion-item>
+            <ion-input type="file" accept="image/*" formControlName="picture" (change)="handleInputChange($event)"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+    </div>
+  </form>
+</ion-content>
+<ion-footer no-border>
+  <ion-toolbar>
+    <ion-button expand="block" (click)="action()">
+      Guardar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

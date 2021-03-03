@@ -1,0 +1,45 @@
+.phone-holder
+{
+    z-index: 1;
+}
+.bottom-holder
+{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    background: white;
+    .slide-content
+    {
+        p{
+            margin-top: 10px !important;
+            padding-bottom: 20px !important;
+        }
+    }
+    .btns-holder
+    {
+        margin: 0 10px;
+        padding-bottom: 10px !important;
+     
+        ion-button{
+            display: inline-block !important;
+            margin: 0 5px !important;
+            width: 45% !important;
+            height: 50px !important;
+            --border-radius: 12px !important;
+            text-transform: none !important;
+        }
+    }
+}
+
+ion-slide {
+    display: block;
+}
+
+ion-img {
+    width: 30%;
+    margin-left: 35vw;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}

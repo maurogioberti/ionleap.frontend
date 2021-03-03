@@ -1,0 +1,32 @@
+  <!-- Theme classes dark, material, bootstrap -->
+  <ngx-datatable #table class="bootstrap expandable" [columnMode]="ColumnMode.force" [headerHeight]="40" [limit]="10"
+  [footerHeight]="50" [rowHeight]="40" [scrollbarH]="true" [rows]="item.rows" (activate)="onActivate($event)">
+  <!-- Row Detail Template -->
+  <ngx-datatable-row-detail [rowHeight]="50" #myDetailRow (toggle)="onDetailToggle($event)">
+    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+        <ion-list>
+          <span *ngFor="let column of item.columns">
+            <ion-item *ngIf="column.expandable">
+              <ion-label><b>{{ column.display }}:</b> {{ row[column.name] }}</ion-label>
+            </ion-item>
+          </span>
+        </ion-list>
+    </ng-template>
+  </ngx-datatable-row-detail>
+  <!-- Column Templates -->
+  <ngx-datatable-column [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false" [canAutoResize]="false">
+    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+      <a [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded"
+        title="Expandir" (click)="toggleExpandRow(row)" class="desktop-hidden">
+      </a>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column *ngFor="let col of item.columns" name="{{ col.name }}" >
+    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+      <span class="{{ col.mobile ? '' : 'mobile-hidden' }}">{{ col.display }}</span>
+    </ng-template>
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <span class="{{ col.mobile ? '' : 'mobile-hidden' }}">{{ value }}</span>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>
